@@ -1,0 +1,42 @@
+{
+	// Obrigatório
+	"manifest_version": 2,
+	"name": "Fechar quadros O.P.",
+	"version": "0.1",
+
+	// Descrição da nossa extensão
+	"description": "Fecha os quadros do Open Project automaticamente",
+
+	// Íconea da nossa extensão
+	"icons": {
+		"48": "icon48.png",
+		"128": "icon128.png"
+	},
+
+	// Utilizaremos as "Page Actions" e registramos isso aqui
+    "page_action": {
+        "default_icon": { 
+            "19" : "icon19.png",
+            "38" : "icon38.png"
+        },
+        "default_title": "Fechar quadros do Open Project automaticamente"
+    },
+
+    // Aqui declaramos as permirssões que precisamos
+    "permissions": [ 
+        "tabs",
+        "declarativeContent"
+    ],
+
+    // Utilizaremos uma "Event Page" (note o persistent: false)
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": false
+    },
+
+    // Injetaremos esses arquivos quando "match" ocorrer
+    "content_scripts": [ {
+        "js": ["inject/batbook.js" ],
+        "matches": [ "https://*.projetos.nasajon.com.br/*" ]
+    } ]
+}
